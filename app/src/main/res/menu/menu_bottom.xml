@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_home"
+        android:title="HOME"
+        android:icon="@drawable/home_24"/>
+    <item android:id="@+id/menu_console"
+        android:title="CONSOLES"
+        android:icon="@drawable/videogame_24"/>
+    <item android:id="@+id/menu_game"
+        android:title="GAMES"
+        android:icon="@drawable/games_24"/>
+</menu>
