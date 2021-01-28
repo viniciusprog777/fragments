@@ -29,6 +29,7 @@
             app:layout_constraintTop_toBottomOf="@id/image_game"
             app:layout_constraintStart_toStartOf="parent"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginStart="10dp"
             android:text="Donkey Kong"/>
 
         <com.google.android.material.chip.ChipGroup
@@ -36,19 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/text_view_game"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp">
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wii U"
-                android:theme="@style/Theme.MaterialComponents.Light"/>
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Switch"
-                android:theme="@style/Theme.MaterialComponents.Light"/>
         </com.google.android.material.chip.ChipGroup>
         <TextView
             android:id="@+id/text_view_descricao_game"
@@ -56,7 +47,9 @@
             android:layout_height="wrap_content"
             android:text="Donkey Kong Country: Tropical Freeze é um jogo eletrônico de plataforma side-scrolling desenvolvido pela Retro Studios que foi publicado pela Nintendo para o Wii U em 21 de fevereiro de 2014 nos Estados Unidos."
             app:layout_constraintTop_toBottomOf="@id/chip_group_consoles"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
         <RatingBar
             android:id="@+id/rating_bar_game"
             android:layout_width="wrap_content"
@@ -70,7 +63,9 @@
             android:scaleX="0.7"
             android:scaleY="0.7"
             android:transformPivotX="0dp"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="10dp"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
