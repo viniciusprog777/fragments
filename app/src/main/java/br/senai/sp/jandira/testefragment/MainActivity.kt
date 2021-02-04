@@ -2,11 +2,16 @@ package br.senai.sp.jandira.testefragment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import br.senai.sp.jandira.testefragment.fragments.ConsoleFragment
 import br.senai.sp.jandira.testefragment.fragments.GameFragment
 import br.senai.sp.jandira.testefragment.fragments.HomeFragment
@@ -26,6 +31,10 @@ class MainActivity : AppCompatActivity(),
 
     private lateinit var bottomNavigation: BottomNavigationView
     private lateinit var navigationView: NavigationView
+
+    private lateinit var toolbar: Toolbar
+
+    private lateinit var drawer: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +56,19 @@ class MainActivity : AppCompatActivity(),
         navigationView = findViewById(R.id.navigation_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        supportFragmentManager.beginTransaction().replace(R.id.frame, homeFragment).commit()
+        toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle("Home")
+        setSupportActionBar(toolbar)
+
+
+        drawer = findViewById(R.id.drawer_layout)
+
+        var toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.open_drawer, R.string.close_drawer)
+
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
+
+        setFragment(homeFragment)
 
     }
 
@@ -68,17 +89,31 @@ class MainActivity : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.menu_home ->{
-                supportFragmentManager.beginTransaction().replace(R.id.frame, homeFragment).commit()
+                setFragment(homeFragment)
+                toolbar.setTitle("Home")
             }
             R.id.menu_console ->{
-                supportFragmentManager.beginTransaction().replace(R.id.frame, consoleFragment).commit()
+                setFragment(consoleFragment)
+                toolbar.setTitle("Consoles")
+
 
             }
             R.id.menu_game ->{
-                supportFragmentManager.beginTransaction().replace(R.id.frame, gameFragment).commit()
-
+                setFragment(gameFragment)
+                toolbar.setTitle("Games")
             }
         }
+
+    var selectedMenu = bottomNavigation.menu.findItem(item.itemId)
+        selectedMenu.setChecked(true)
+    if (drawer.isDrawerOpen(GravityCompat.START)) {
+        drawer.closeDrawer(GravityCompat.START)
+    }
         return true
     }
+
+    fun setFragment(fragment: Fragment){
+            supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()
+    }
+
 }

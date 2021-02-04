@@ -4,12 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.GameFragment"
-    android:background="@color/colorAccent">
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_game"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/holder_game_recycler_view"/>
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/add"
+        android:textAllCaps="true"
+        android:tint="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/rounded_button"
+
+        />
 
 </RelativeLayout>
